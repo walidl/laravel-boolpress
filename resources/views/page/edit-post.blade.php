@@ -8,19 +8,19 @@
 
       <div class="col-8 ml-col-2">
 
-        <form class="" action="{{route('post.store')}}" method="post">
+        <form class="" action="{{route('post.update',$post->id)}}" method="post">
 
           @csrf
+          @method('PATCH')
 
           <div class="form-group" >
             <label for="title">Title</label>
-            <input type="text" class="form-control" name = "title" placeholder="Enter Title">
-            {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+            <input type="text" class="form-control" name = "title" value="{{$post->title}}">
           </div>
 
           <div class="form-group">
             <label for="body">Article</label>
-            <textarea type="text" class="form-control" name = "body" placeholder="Article..." rows="15"></textarea>
+            <textarea type="text" class="form-control" name = "body"  rows="15"> {{$post->body}}</textarea>
           </div>
 
           <div class="form-group form-check pl-0">
@@ -29,7 +29,8 @@
 
             @foreach ($categories as $category)
 
-              <input type="checkbox" name="check_list[]" value="{{$category->id}}"><label>{{ucfirst($category->name)}}  </label><br>
+              <input type="checkbox" name="check_list[]" value="{{$category->id}}"  {{$post->checkCategory($category->id)}}><label>{{ucfirst($category->name)}}  </label><br>
+
             @endforeach
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>

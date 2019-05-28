@@ -12,7 +12,7 @@
               <div class="d-inline-block mb-2 ">
                 @foreach ($post->categories as $category)
 
-                  <a href="{{route('category.show',$category->name)}}" ><strong style="color: {{$category->name}}">{{ucfirst($category->name)}}</strong></a>
+                  <a href="{{route('category.show',$category->name)}}" class="category"><strong style="color: {{$category->name}}">{{ucfirst($category->name)}}</strong></a>
                   @if ($loop->remaining)
                     ,
                   @endif
@@ -24,7 +24,11 @@
               </h3>
               <div class="mb-1 text-muted">{{date("D d", strtotime($post->created_at))}}</div>
               <p class="preview mb-auto">{{ $post->preview() }}</p>
-              <a href="{{route('post.show', $post->id )}}">Continue reading</a>
+              <div class="d-flex justify-content-between links">
+
+                <a href="{{route('post.show', $post->id )}}">Continue reading</a>
+                <a href="{{route('post.edit', $post->id )}}">Edit</a>
+              </div>
             </div>
           </div>
         </div>

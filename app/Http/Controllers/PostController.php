@@ -50,15 +50,7 @@ class PostController extends Controller
 
       $newPost  = Post::create($post)->categories()->sync($request->check_list);
 
-     //  Post::create([
-     //   'title' =>request('title'),
-     //   'body' =>request('body'),
-     // ]);
-     //
-     //    $newPost = Post::create();
-     //
-     //    $post->
-
+      return redirect('/');
 
 
     }
@@ -84,7 +76,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::FindOrFail($id);
+        $categories= Category::all();
+
+        return view('page.edit-post',compact('post','categories'));
     }
 
     /**
@@ -96,7 +91,21 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+
+      $post =$request->validate([
+
+          'title' => 'required',
+          'body' => 'required'
+        ]);
+
+
+      Post::whereId($id)->update($post);
+
+      $upPost = Post::FindOrFail($id)->categories()->sync($request->check_list);
+      
+
+      return redirect('/');
     }
 
     /**
@@ -107,6 +116,16 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $post =$request->validate([
+
+          'title' => 'required',
+          'body' => 'required'
+        ]);
+
+      // dd($request->check_list);
+
+      $newPost  = Post::create($post)->categories()->sync($request->check_list);
+
+      return redirect('/');
     }
 }

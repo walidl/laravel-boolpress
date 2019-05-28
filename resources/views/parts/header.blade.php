@@ -6,7 +6,7 @@
 
 
             <a href="{{ route('post.create')}}" class="badge badge-light py-3 px-4"><h5 class="m-0">New Post</h5 class="m-0"></a>
-
+              
         </div>
       </div>
 </header>

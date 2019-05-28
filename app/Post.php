@@ -34,4 +34,22 @@ class Post extends Model
     return $tagless;
 
     }
+
+    function checkCategory($catId){
+
+
+      // dd($this->categories)
+
+      foreach ($this->categories as $category) {
+
+        if($category->id == $catId){
+
+          return "checked";
+        }
+
+      }
+
+      return "";
+
+    }
 }
