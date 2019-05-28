@@ -20,11 +20,11 @@
 
           <div class="form-group">
             <label for="body">Article</label>
-            <textarea type="text" class="form-control" name = "body" placeholder="Article..."></textarea>
+            <textarea type="text" class="form-control" name = "body" placeholder="Article..." rows="15"></textarea>
           </div>
 
-          <div class="form-group form-check">
-            <label for="exampleInputPassword1">Password</label>
+          <div class="form-group form-check pl-0">
+            <label for="check_list[]">Categories</label>
             <option value="" disabled selected>Choose Categories</option>
 
             @foreach ($categories as $category)
