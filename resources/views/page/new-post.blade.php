@@ -1,0 +1,42 @@
+@extends('layout.blog-layout')
+
+
+@section('content')
+  <div class="container py-3 ">
+
+    <div class="row justify-content-center">
+
+      <div class="col-8 ml-col-2">
+
+        <form class="" action="{{route('post.store')}}" method="post">
+
+          @csrf
+
+          <div class="form-group" >
+            <label for="title">Title</label>
+            <input type="text" class="form-control" name = "title" placeholder="Enter Title">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+
+          <div class="form-group">
+            <label for="body">Article</label>
+            <textarea type="text" class="form-control" name = "body" placeholder="Article..."></textarea>
+          </div>
+
+          <div class="form-group form-check">
+            <label for="exampleInputPassword1">Password</label>
+            <option value="" disabled selected>Choose Categories</option>
+
+            @foreach ($categories as $category)
+
+              <input type="checkbox" name="check_list[]" value="{{$category->id}}"><label>{{ucfirst($category->name)}}  </label><br>
+            @endforeach
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+@stop
