@@ -2,20 +2,23 @@
 
 @section('content')
   <div class="container py-3">
+    <div class="row justify-content-center">
+
+      <h2 class="my-3">Last Posts</h2>
+    </div>
 
     <div class="row mb-2">
+
       @foreach ($posts as $post)
 
         <div class="col-md-6">
           <div class="card post flex-md-row mb-4 shadow-sm h-md-250">
             <div class="card-body d-flex flex-column align-items-start">
-              <div class="d-inline-block mb-2 ">
+              <div class="d-flex justify-content-end mb-2 categories">
                 @foreach ($post->categories as $category)
 
-                  <a href="{{route('category.show',$category->name)}}" class="category"><strong style="color: {{$category->name}}">{{ucfirst($category->name)}}</strong></a>
-                  @if ($loop->remaining)
-                    ,
-                  @endif
+                  <a href="{{route('category.show',$category->name)}}" class="d-inline-block px-1 category ml-1" style="background-color: {{$category->name}}"><strong >{{ucfirst($category->name)}}</strong></a>
+
                 @endforeach
 
               </div>

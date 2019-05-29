@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+ul {
+  list-style: none;
+}
+
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -10667,8 +10671,31 @@ header {
   color: white;
 }
 
-header h1 {
+header a {
+  color: white;
+}
+
+header a h1 {
   font-style: italic;
+}
+
+header a.badge {
+  font-size: 18px !important;
+}
+
+header .category-menu li a {
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.3s ease;
+  font-size: 16px;
+}
+
+header .category-menu li a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+h2.categoryTitle {
+  color: white;
 }
 
 .card.post {
@@ -10679,8 +10706,14 @@ header h1 {
   height: 250px;
 }
 
-.card.post .category {
-  font-size: 16px;
+.card.post .categories {
+  width: 100%;
+}
+
+.card.post .categories .category {
+  font-size: 14px;
+  color: white;
+  border-radius: 3px;
 }
 
 .card.post .links {

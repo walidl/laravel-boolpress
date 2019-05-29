@@ -103,7 +103,6 @@ class PostController extends Controller
       Post::whereId($id)->update($post);
 
       $upPost = Post::FindOrFail($id)->categories()->sync($request->check_list);
-      
 
       return redirect('/');
     }
