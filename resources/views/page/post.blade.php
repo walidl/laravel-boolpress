@@ -8,7 +8,10 @@
       <div class="col-8 ml-col-2">
 
         <h1>{{$post->title}}</h1>
-        <div class="mb-1 text-muted">{{date("M d, Y", strtotime($post->created_at))}}</div>
+        <div class="">
+          <span class="mb-1 text-muted mr-2">{{date("D d", strtotime($post->created_at))}}</span>
+          <span > By <a href="#">{{$post->author->username}}</a> </span>
+        </div>
 
         <hr>
 

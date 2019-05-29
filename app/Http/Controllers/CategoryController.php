@@ -49,9 +49,9 @@ class CategoryController extends Controller
      */
     public function show($name)
     {
-      $category = Category::where('name', 'LIKE', $name)->get();
+      $cat = Category::where('name', 'LIKE', $name)->first();
       // dd($category);
-      $cat = $category[0];
+      
       return view('page.category',compact('cat'));
 
 

@@ -25,7 +25,10 @@
               <h3 class="mb-0">
                 <p class="text-dark">{{$post->title}}</p>
               </h3>
-              <div class="mb-1 text-muted">{{date("D d", strtotime($post->created_at))}}</div>
+              <div class="">
+                <span class="mb-1 text-muted mr-2">{{date("D d", strtotime($post->created_at))}}</span>
+                <span > By <a href="#">{{$post->author->username}}</a> </span>
+              </div>
               <p class="preview mb-auto">{{ $post->preview() }}</p>
               <div class="d-flex justify-content-between links">
 
