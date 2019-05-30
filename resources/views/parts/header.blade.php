@@ -4,7 +4,7 @@
 
           <a href="{{ route('post.create')}}" class="badge badge-light py-2 px-3">New Post</a>
           <a href="/"><h1 class="m-0"> Blog </h1></a>
-          <a href="/search" class=" py-2 px-3">Search</a>
+          <a href="/search" class=" search py-2 px-3">Search <i class="fas fa-search"></i></a>
 
 
 

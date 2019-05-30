@@ -4,8 +4,10 @@
 
 
   <div class="container">
-    <div class="row">
-      <form class="" action="{{route('search.get')}}" method="GET" >
+    <div class="row ">
+      <div class="col-12 p-3 mb-3">
+
+        <form class="form-inline justify-content-between align-items-center" action="{{route('search.get')}}" method="GET" >
 
 
         <div class="form-group row" >
@@ -17,7 +19,7 @@
         </div>
 
         <div class="form-group row ">
-          <select class="form-control form-control-sm" name="category" >
+          <select class="form-control form-control" name="category" >
             <option value="">Category</option>
 
             @foreach ($categories as $category)
@@ -28,7 +30,7 @@
         </div>
 
         <div class="form-group row ">
-          <select class="form-control form-control-sm" name="author">
+          <select class="form-control form-control" name="author">
             <option value="">Author</option>
 
             @foreach ($authors as $author)
@@ -40,10 +42,14 @@
 
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
+      </div>
     </div>
 
     @if (sizeof($posts) > 0)
+
+      <h2> Results</h2>
       <div class="row">
+
 
         @foreach ($posts as $post)
 

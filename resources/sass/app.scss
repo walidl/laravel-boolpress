@@ -7,8 +7,11 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+//Fontawesome
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
 @import 'header';
 
-@import 'content'; 
+@import 'content';
 
 @import 'cardPost';

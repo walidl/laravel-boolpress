@@ -3,19 +3,40 @@ header{
 
   background-color: $navBlack;
   color: white;
-  a{
-    color:white;
-    h1{
 
-      font-style: italic
+  h1{
+
+    font-style: italic;
+    color:white;
+
+    
+
+  }
+  a{
+
+
+    &.badge{
+      font-size: 18px !important;
+    }
+
+    &.search{
+
+      font-size: 18px;
+      transition: color 0.3s ease;
+
+      color:rgba(255,255,255,0.7);
+      &:hover{
+
+        text-decoration: none;
+        color:rgba(255,255,255,1);
+
+      }
 
     }
 
   }
 
-  a.badge{
-    font-size: 18px !important;
-  }
+
 
   .category-menu{
 

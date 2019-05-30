@@ -24,3 +24,14 @@ ul{
 
   list-style: none;
 }
+
+a{
+  color: inherit;
+
+
+  &:hover{
+
+    text-decoration: none !important;
+    color: inherit;
+  }
+}
