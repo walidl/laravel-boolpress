@@ -19,8 +19,9 @@
     </head>
     <body>
 
+        @include('parts.header')
 
-        @if ($errors->any())
+        {{-- @if ($errors->any())
           <div class="container">
 
 
@@ -29,7 +30,7 @@
               {{ $error }}
             </div>
 
-          @endforeach
+          @endforeach --}}
 
 
           </div>
