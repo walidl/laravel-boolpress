@@ -11,6 +11,15 @@
 |
 */
 
-Route::resource('/','HomeController');
+Route::get('/','HomeController@index');
 Route::resource('category','CategoryController');
 Route::resource('post','PostController');
+Route::get('/search','SearchController@search')->name('search.get');
+
+
+
+// Route::post('/search','SearchController@getSearch');
+
+// Route::get('/search/sesda','SearchControlled
+
+// Route::get('search?title={coding}&author={coding}')

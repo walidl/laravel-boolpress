@@ -22,7 +22,6 @@
             <label for="body">Article</label>
             <textarea type="text" class="form-control" name = "body"  rows="15"> {{$post->body}}</textarea>
           </div>
-
           <div class="form-group form-check pl-0">
             <label for="check_list[]">Categories</label>
             <option value="" disabled selected>Choose Categories</option>
@@ -32,6 +31,17 @@
               <input type="checkbox" name="check_list[]" value="{{$category->id}}"  {{$post->checkCategory($category->id)}}><label>{{ucfirst($category->name)}}  </label><br>
 
             @endforeach
+          </div>
+
+          <div class="form-group form-check pl-0">
+            <select class="form-control form-control-sm" name="author_id">
+              <option value="">Author</option>
+
+              @foreach ($authors as $author)
+                <option   {{ $author->id === $post->author_id ? "selected" : "" }} value="{{$author->id}}">{{$author->username}}</option>
+
+              @endforeach
+            </select>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>

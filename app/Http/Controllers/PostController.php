@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
+use App\Author;
 
 
 class PostController extends Controller
@@ -28,8 +29,9 @@ class PostController extends Controller
     {
 
         $categories= Category::all();
+        $authors = Author::all();
 
-        return view('page.new-post',compact('categories'));
+        return view('page.new-post',compact('categories','authors'));
     }
 
     /**
@@ -43,7 +45,8 @@ class PostController extends Controller
       $post =$request->validate([
 
           'title' => 'required',
-          'body' => 'required'
+          'body' => 'required',
+          'author_id'  => 'required'
         ]);
 
       // dd($request->check_list);
@@ -78,8 +81,9 @@ class PostController extends Controller
     {
         $post = Post::FindOrFail($id);
         $categories= Category::all();
+        $authors = Author::all();
 
-        return view('page.edit-post',compact('post','categories'));
+        return view('page.edit-post',compact('post','categories','authors'));
     }
 
     /**
@@ -96,7 +100,8 @@ class PostController extends Controller
       $post =$request->validate([
 
           'title' => 'required',
-          'body' => 'required'
+          'body' => 'required',
+          'author_id' => 'required'
         ]);
 
 
@@ -115,16 +120,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-      $post =$request->validate([
-
-          'title' => 'required',
-          'body' => 'required'
-        ]);
-
-      // dd($request->check_list);
-
-      $newPost  = Post::create($post)->categories()->sync($request->check_list);
-
-      return redirect('/');
+      
     }
 }

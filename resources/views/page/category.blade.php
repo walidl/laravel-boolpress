@@ -32,7 +32,7 @@
 
               </h3>
               <div class="">
-                <span class="mb-1 text-muted mr-2">{{date("D d", strtotime($post->created_at))}}</span>
+                <span class="mb-1 text-muted mr-2">{{date("D d", strtotime($post->created_at))}}</span>|
                 <span > By <a href="#">{{$post->author->username}}</a> </span>
               </div>
               <p class="preview mb-auto">{{ $post->preview() }}</p>

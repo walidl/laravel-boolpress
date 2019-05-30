@@ -32,6 +32,20 @@
               <input type="checkbox" name="check_list[]" value="{{$category->id}}"><label>{{ucfirst($category->name)}}  </label><br>
             @endforeach
           </div>
+
+          <div class="form-group form-check pl-0">
+            <select class="form-control form-control-sm" name="author_id">
+              <option value="">Author</option>
+
+              @foreach ($authors as $author)
+                <option  value="{{$author->id}}">{{$author->username}}</option>
+
+                {{-- <label>{{ucfirst($category->name)}}  </label><br> --}}
+              @endforeach
+            </select>
+          </div>
+
+
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 
