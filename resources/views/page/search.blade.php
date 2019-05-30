@@ -7,41 +7,40 @@
     <div class="row ">
       <div class="col-12 p-3 mb-3">
 
-        <form class="form-inline justify-content-between align-items-center" action="{{route('search.get')}}" method="GET" >
+        <form class="form-inline justify-content-start align-items-center" action="{{route('search.get')}}" method="GET" >
 
+          <div class="form-group mr-4 row" >
+            <input type="text" class="form-control" name = "title" value="{{ app('request')->input('title') }}" placeholder="Title">
+          </div>
 
-        <div class="form-group row" >
-          <input type="text" class="form-control" name = "title" value="{{ app('request')->input('title') }}" placeholder="Title">
-        </div>
+          <div class="form-group mr-4 row">
+            <input type="text" class="form-control" name = "content" value="{{ app('request')->input('content') }}" placeholder="content" >
+          </div>
 
-        <div class="form-group row">
-          <input type="text" class="form-control" name = "content" value="{{ app('request')->input('content') }}" placeholder="content" >
-        </div>
+          <div class="form-group mr-4 row ">
+            <select class="form-control form-control" name="category" >
+              <option value="">Category</option>
 
-        <div class="form-group row ">
-          <select class="form-control form-control" name="category" >
-            <option value="">Category</option>
+              @foreach ($categories as $category)
+                <option  value="{{$category->id}}" {{ app('request')->input('category') == $category->id ? "selected" : "" }}>{{$category->name}}</option>
 
-            @foreach ($categories as $category)
-              <option  value="{{$category->id}}" {{ app('request')->input('category') == $category->id ? "selected" : "" }}>{{$category->name}}</option>
+              @endforeach
+            </select>
+          </div>
 
-            @endforeach
-          </select>
-        </div>
+          <div class="form-group mr-4 row ">
+            <select class="form-control form-control" name="author">
+              <option value="">Author</option>
 
-        <div class="form-group row ">
-          <select class="form-control form-control" name="author">
-            <option value="">Author</option>
+              @foreach ($authors as $author)
+                <option name="" value="{{$author->id}}" {{ app('request')->input('author') == $author->id ? "selected" : "" }}>{{$author->username}}</option>
 
-            @foreach ($authors as $author)
-              <option name="" value="{{$author->id}}" {{ app('request')->input('author') == $author->id ? "selected" : "" }}>{{$author->username}}</option>
+              @endforeach
+            </select>
+          </div>
 
-            @endforeach
-          </select>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
       </div>
     </div>
 
@@ -65,11 +64,11 @@
 
                 </div>
                 <h3 class="mb-0">
-                  <p class="text-dark">{{$post->title}}</p>
+                  <p class="text-dark mb-0">{{$post->title}}</p>
                 </h3>
-                <div class="">
-                  <span class="mb-1 text-muted mr-2">{{date("D d", strtotime($post->created_at))}}</span> |
-                  <span > By <a href="#">{{$post->author->username}}</a> </span>
+                <div class="mb-2 ">
+                  <small class="mb-1 text-muted mr-2">{{date("D d", strtotime($post->created_at))}}</small>|
+                  <small > By <a href="#">{{$post->author->username}}</a> </small>
                 </div>
                 <p class="preview mb-auto">{{ $post->preview() }}</p>
                 <div class="d-flex justify-content-between links">
@@ -83,6 +82,11 @@
         @endforeach
 
       </div>
-    @endif
+  @else
+
+    <div class="alert alert-dark" role="alert">
+     0 Results  - <a href="/search">refresh</a>
+    </div>
+  @endif
   </div>
 @stop

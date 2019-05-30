@@ -6,9 +6,6 @@
           <a href="/"><h1 class="m-0"> Blog </h1></a>
           <a href="/search" class=" search py-2 px-3">Search <i class="fas fa-search"></i></a>
 
-
-
-
         </div>
         <hr class="mb-1">
         <div class="row justify-content-center ">

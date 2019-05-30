@@ -10719,6 +10719,10 @@ h2.categoryTitle {
   color: white;
 }
 
+a.category {
+  color: white;
+}
+
 .card.post {
   height: 250px;
 }

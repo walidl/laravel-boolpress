@@ -30,33 +30,33 @@ class SearchController extends Controller
       $author = $request->input('author');
       // dd($title,$content,$category,$author);
 
-      if($title == null && $content == null && $category == null && $author == null){
-
-        return [];
-      }
-      else{
+      // if($title == null && $content == null && $category == null && $author == null){
+      //
+      //   return [];
+      // }
+      // else{
 
         $q = Post::query();
 
-        if($title != null && $title != ""){
+        if($title){
 
           $q->where('title','LIKE' ,'%' . $title .'%' );
 
         }
 
-        if($content != null && $content != ""){
+        if($content){
 
           $q->where('body','LIKE' , '%'. $content .'%' );
         }
 
-        if($author != null && $author != ""){
+        if($author){
 
           $q->where('author_id','=' , $author );
 
 
         }
 
-          if($category != null && $category != ""){
+          if($category){
 
             $q->whereHas('categories', function ($query) use ($category) {
                 return $query->where('category_id','=', $category);
@@ -71,7 +71,7 @@ class SearchController extends Controller
         // dd($posts);
 
         return $posts;
-      }
+
 
     }
 }

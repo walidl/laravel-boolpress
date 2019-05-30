@@ -14,6 +14,7 @@
 
 
     <div class="row mb-2">
+
       @foreach ($cat->posts as $post)
 
         <div class="col-md-6">
@@ -28,13 +29,14 @@
 
               </div>
               <h3 class="mb-0">
-                <p class="text-dark">{{$post->title}}</p>
+                <p class="text-dark mb-0">{{$post->title}}</p>
 
               </h3>
-              <div class="">
-                <span class="mb-1 text-muted mr-2">{{date("D d", strtotime($post->created_at))}}</span>|
-                <span > By <a href="#">{{$post->author->username}}</a> </span>
+              <div class="mb-2 ">
+                <small class="mb-1 text-muted mr-2">{{date("D d", strtotime($post->created_at))}}</small>|
+                <small > By <a href="#">{{$post->author->username}}</a> </small>
               </div>
+
               <p class="preview mb-auto">{{ $post->preview() }}</p>
               <div class="d-flex justify-content-between links">
 
@@ -47,10 +49,10 @@
       @endforeach
 
 
-      </div>
     </div>
   </div>
+</div>
 
-  </div>
+</div>
 
 @stop
