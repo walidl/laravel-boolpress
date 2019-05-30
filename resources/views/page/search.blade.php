@@ -9,11 +9,11 @@
 
 
         <div class="form-group row" >
-          <input type="text" class="form-control" name = "title" placeholder="Title">
+          <input type="text" class="form-control" name = "title" value="{{ app('request')->input('title') }}" placeholder="Title">
         </div>
 
         <div class="form-group row">
-          <input type="text" class="form-control" name = "content" placeholder="content" >
+          <input type="text" class="form-control" name = "content" value="{{ app('request')->input('content') }}" placeholder="content" >
         </div>
 
         <div class="form-group row ">
@@ -21,9 +21,8 @@
             <option value="">Category</option>
 
             @foreach ($categories as $category)
-              <option name="{{$category->id}}" value="{{$category->id}}">{{$category->name}}</option>
+              <option  value="{{$category->id}}" {{ app('request')->input('category') == $category->id ? "selected" : "" }}>{{$category->name}}</option>
 
-              {{-- <label>{{ucfirst($category->name)}}  </label><br> --}}
             @endforeach
           </select>
         </div>
@@ -33,9 +32,8 @@
             <option value="">Author</option>
 
             @foreach ($authors as $author)
-              <option name="" value="{{$author->id}}">{{$author->username}}</option>
+              <option name="" value="{{$author->id}}" {{ app('request')->input('author') == $author->id ? "selected" : "" }}>{{$author->username}}</option>
 
-              {{-- <label>{{ucfirst($category->name)}}  </label><br> --}}
             @endforeach
           </select>
         </div>
