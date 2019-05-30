@@ -59,7 +59,7 @@
                 <div class="d-flex justify-content-end mb-2 categories">
                   @foreach ($post->categories as $category)
 
-                    <a href="{{route('category.show',$category->name)}}" class="d-inline-block px-1 category ml-1" style="background-color: {{$category->name}}"><strong >{{ucfirst($category->name)}}</strong></a>
+                    <a href="{{route('catIndex',$category->name)}}" class="d-inline-block px-1 category ml-1" style="background-color: {{$category->name}}"><strong >{{ucfirst($category->name)}}</strong></a>
 
                   @endforeach
 
