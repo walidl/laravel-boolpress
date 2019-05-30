@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
@@ -40,21 +41,15 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-      $post =$request->validate([
-
-          'title' => 'required',
-          'body' => 'required',
-          'author_id'  => 'required'
-        ]);
+      $post = $request->validated();
 
       // dd($request->check_list);
 
       $newPost  = Post::create($post)->categories()->sync($request->check_list);
 
       return redirect('/');
-
 
     }
 
@@ -93,16 +88,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
 
 
-      $post =$request->validate([
-
-          'title' => 'required',
-          'body' => 'required',
-          'author_id' => 'required'
-        ]);
+      $post =$request->validated();
 
 
       Post::whereId($id)->update($post);
@@ -120,6 +110,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-      
+
     }
 }
