@@ -30,13 +30,18 @@ class SearchController extends Controller
       $author = $request->input('author');
       // dd($title,$content,$category,$author);
 
-      // if($title == null && $content == null && $category == null && $author == null){
-      //
-      //   return [];
-      // }
-      // else{
 
         $q = Post::query();
+
+      // Parto da tutti i post che hanno una determinata categoria
+      // eleganza e furberia
+
+      //   if($category){
+      //
+      //     $q = Category::FindOrFail($category)-> posts();
+      //
+      // }
+
 
         if($title){
 
@@ -56,12 +61,14 @@ class SearchController extends Controller
 
         }
 
+        // Joined query
+        // Carroarmato
+
           if($category){
 
             $q->whereHas('categories', function ($query) use ($category) {
                 return $query->where('category_id','=', $category);
               });
-            // $q=Post::whereHas('categories')->where('id','=', $category);
 
         }
 

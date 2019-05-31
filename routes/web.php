@@ -3,7 +3,7 @@
 
 Route::get('/','HomeController@index');
 Route::get('category/{name}','CategoryController@catIndex')->name("catIndex");
-// Route::resource('post','PostController');
+
 Route::get('admin/post/new','PostController@create')->name('post.create');
 Route::post('admin/post/','PostController@store')->name('post.store');
 Route::get('/post/{id}','PostController@show')->name('post.show');

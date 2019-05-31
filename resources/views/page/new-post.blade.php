@@ -27,7 +27,7 @@
           <div class="form-group form-check pl-0" >
             <label for="check_list[]">Categories</label>
             <option value="" disabled selected>Choose Categories</option>
-            {!! $errors->first('check_list[]', '<small class="form-text text-danger">:message</small>') !!}
+            {!! $errors->first('check_list', '<small class="form-text text-danger">:message</small>') !!}
 
             @foreach ($categories as $category)
               <div class="d-flex align-items-center">

@@ -43,11 +43,14 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-      $post = $request->validated();
+      $validData = $request->validated();
 
-      // dd($request->check_list);
+      $post= Post::create($validData );
 
-      $newPost  = Post::create($post)->categories()->sync($request->check_list);
+      $categoryIds = $validData['check_list'];
+      $categories = Category::find($categoryIds);
+      $post->categories()->sync($categories);
+
 
       return redirect('/');
 
@@ -91,13 +94,15 @@ class PostController extends Controller
     public function update(PostRequest $request, $id)
     {
 
+      $validData = $request->validated();
 
-      $post =$request->validated();
+      $post= Post::FindOrFail($id);
+      $post->update($validData);
 
+      $categoryIds = $validData['check_list'];
+      $categories = Category::find($categoryIds);
+      $post->categories()->sync($categories);
 
-      Post::whereId($id)->update($post);
-
-      $upPost = Post::FindOrFail($id)->categories()->sync($request->check_list);
 
       return redirect('/');
     }

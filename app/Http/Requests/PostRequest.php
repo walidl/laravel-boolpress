@@ -27,7 +27,7 @@ class PostRequest extends FormRequest
           'title' => 'required',
           'body' => 'required',
           'author_id' => 'required',
-          // 'check_list[]' => 'required|array|min:1'
+          'check_list' => 'required'
         ];
     }
 }
