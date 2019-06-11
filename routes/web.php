@@ -20,5 +20,3 @@ Route::delete('admin/myposts/destroy/{id}','UserpostsController@deletePost')->na
 Route::get('/search','SearchController@search')->name('search.get');
 
 Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');
