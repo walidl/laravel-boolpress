@@ -26,7 +26,6 @@ class PostRequest extends FormRequest
         return [
           'title' => 'required',
           'body' => 'required',
-          'author_id' => 'required',
           'check_list' => 'required'
         ];
     }

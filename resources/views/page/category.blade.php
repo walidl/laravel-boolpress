@@ -1,11 +1,11 @@
-@extends('layout.blog-layout')
+@extends('layouts.app')
 
 @section('content')
 
 
-  <div class="flex-column mb-3" style="background-color: {{$cat->name}}" >
+  <div class="flex-column mb-3" style="background-color: {{$categoryName}}" >
     <div class="container p-2">
-      <h2 class=" categoryTitle m-0">{{ucfirst($cat->name)}}</h2>
+      <h2 class=" categoryTitle m-0">{{ucfirst($categoryName)}}</h2>
 
     </div>
   </div>
@@ -13,44 +13,30 @@
   <div class="container pb-3">
 
 
-    <div class="row mb-2">
+    @include('parts.post-component')
+    <div class="row mb-2" id="posts">
 
-      @foreach ($cat->posts as $post)
 
-        <div class="col-md-6">
-          <div class="card post flex-md-row mb-4 shadow-sm h-md-250">
-            <div class="card-body d-flex flex-column align-items-start">
-              <div class="d-flex justify-content-end mb-2 categories">
-                @foreach ($post->categories as $category)
+      @foreach ($posts as $post)
 
-                  <a href="{{route('catIndex',$category->name)}}" class="d-inline-block px-1 category ml-1" style="background-color: {{$category->name}}"><strong >{{ucfirst($category->name)}}</strong></a>
 
-                @endforeach
+        <post-card
 
-              </div>
-              <h3 class="mb-0">
-                <p class="text-dark mb-0">{{$post->title}}</p>
+          post-id = '{{$post->id}}'
+          :categories ='{{$post->categories}}'
+          title = '{{$post->title}}'
+          user-name  =  '{{$post->user->name}}'
+          body = '{{$post->body}}'
+          preview = '{{ $post->preview() }}'
+          created-at ='{{date("D d", strtotime($post->created_at))}}'
+          is-logged = '{{ Auth::check() && (auth()->user()->id == $post->user->id) }}'
+        >
 
-              </h3>
-              <div class="mb-2 ">
-                <small class="mb-1 text-muted mr-2">{{date("D d", strtotime($post->created_at))}}</small>|
-                <small > By <a href="#">{{$post->author->username}}</a> </small>
-              </div>
-
-              <p class="preview mb-auto">{{ $post->preview() }}</p>
-              <div class="d-flex justify-content-between links">
-
-                <a href="{{route('post.show', $post->id )}}">Continue reading</a>
-                <a href="{{route('post.edit', $post->id )}}">Edit</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        </post-card>
       @endforeach
 
-
-    </div>
   </div>
+</div>
 </div>
 
 </div>

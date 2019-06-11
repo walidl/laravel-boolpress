@@ -1,6 +1,9 @@
 .card.post{
 
+  // background-color: #F8FAFC;
+
   height: 250px;
+  min-width: 380px!important
 
   img{
 
@@ -8,22 +11,43 @@
     height: 250px;
   }
 
-  .categories{
+  .info{
 
     width: 100%;
 
-    .category{
-
-      font-size: 14px;
-      color:white;
-      border-radius: 3px;
-    }
   }
+
 
   .links{
 
     width: 100%;
   }
 
+  .card-header{
+
+    background-color: #E8F2FE;
+  }
+
+  .card-footer{
+
+    position: absolute;
+    bottom:0;
+  }
+
+
+}
+.card{
+
+  .category{
+
+    font-size: 12px;
+    color:white;
+    border-radius: 3px;
+  }
+
+  .fas{
+
+  font-size: 20px;
+  }
 
 }

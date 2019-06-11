@@ -6,7 +6,6 @@ use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
-use App\Author;
 
 
 class PostController extends Controller
@@ -30,9 +29,10 @@ class PostController extends Controller
     {
 
         $categories= Category::all();
-        $authors = Author::all();
 
-        return view('page.new-post',compact('categories','authors'));
+
+
+        return view('page.new-post',compact('categories'));
     }
 
     /**
@@ -43,16 +43,21 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-      $validData = $request->validated();
+    // dd($request->all());
 
-      $post= Post::create($validData );
+      $validData = $request->validated();
+      $post = new Post;
+      $post->title = $validData['title'];
+      $post->body = $validData['body'];
+      $post->user_id = auth()->user()->id;
+      $post->save();
 
       $categoryIds = $validData['check_list'];
       $categories = Category::find($categoryIds);
       $post->categories()->sync($categories);
 
 
-      return redirect('/');
+      return redirect('/')->with('success','New Post created successfully');
 
     }
 
@@ -79,9 +84,15 @@ class PostController extends Controller
     {
         $post = Post::FindOrFail($id);
         $categories= Category::all();
-        $authors = Author::all();
 
-        return view('page.edit-post',compact('post','categories','authors'));
+        if(auth()->user()->id !== $post->user->id){
+
+          return redirect('/')->with('error','Unothorized Page');
+        }else{
+          return view('page.edit-post',compact('post','categories'));
+
+        }
+
     }
 
     /**
@@ -104,7 +115,7 @@ class PostController extends Controller
       $post->categories()->sync($categories);
 
 
-      return redirect('/');
+      return redirect('/')->with('success','post updated successfully');
     }
 
     /**

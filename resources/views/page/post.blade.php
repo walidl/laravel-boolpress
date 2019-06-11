@@ -1,4 +1,4 @@
-@extends('layout.blog-layout')
+@extends('layouts.app')
 
 @section('content')
   <div class="container py-3 ">
@@ -12,7 +12,7 @@
 
           <div class="">
             <span class="mb-1 text-muted mr-2">{{date("D d", strtotime($post->created_at))}}</span>
-            <span > By <a href="#">{{$post->author->username}}</a> </span>
+            <span > By <a href="#">{{$post->user->name}}</a> </span>
 
           </div>
           <div class="d-flex justify-content-start mb-2 categories">

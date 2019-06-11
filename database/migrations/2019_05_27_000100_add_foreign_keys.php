@@ -15,20 +15,24 @@ class AddForeignKeys extends Migration
     {
       Schema::table('category_post', function (Blueprint $table) {
 
-          $table->foreign('post_id','post')
-                ->references('id')
-                ->on('posts');
+        $table->foreign('post_id','post')
+              ->references('id')
+              ->on('posts')
+              ->onDelete('cascade');
 
-          $table->foreign('category_id','category')
+        $table->foreign('category_id','category')
                 ->references('id')
-                ->on('categories');
+                ->on('categories')
+                ->onDelete('cascade');
+
       });
 
       Schema::table('posts', function (Blueprint $table) {
 
-        $table->foreign('author_id','author')
+        $table->foreign('user_id','user')
               ->references('id')
-              ->on('authors');
+              ->on('users');
+              // ->onDelete('cascade');
       });
     }
 
@@ -49,7 +53,9 @@ class AddForeignKeys extends Migration
 
       Schema::create('post', function (Blueprint $table) {
 
-        $table->dropForeign('author');
+        $table->dropForeign('user');
+        // $table->dropForeign('category');
+
       });
     }
 }

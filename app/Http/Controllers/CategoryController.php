@@ -13,10 +13,15 @@ class CategoryController extends Controller
 
     public function catIndex($name)
     {
-      $cat = Category::where('name', 'LIKE', $name)->first();
-      // dd($category);
 
-      return view('page.category',compact('cat'));
+
+
+      $category = Category::where('name', 'LIKE', $name)->first();
+      $posts = $category->posts()->get();
+      // dd($posts);
+
+      return view('page.category',compact('posts'))
+      ->with('categoryName', $category->name);
 
 
     }

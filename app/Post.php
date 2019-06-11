@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable =['title','body','author_id'];
+    protected $fillable =['title','body','user_id'];
 
 
     function categories(){
@@ -14,9 +14,9 @@ class Post extends Model
       return $this->belongsToMany(Category ::class);
     }
 
-    function author(){
+    function user(){
 
-      return $this->belongsTo(Author::class);
+      return $this->belongsTo(User::class);
 
     }
 

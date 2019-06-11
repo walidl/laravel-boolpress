@@ -1,4 +1,4 @@
-@extends('layout.blog-layout')
+@extends('layouts.app')
 
 
 @section('content')
@@ -11,6 +11,7 @@
         <form class="" action="{{route('post.store')}}" method="post">
 
           @csrf
+
 
           <div class="form-group" >
             <label for="title">Title</label>
@@ -35,19 +36,6 @@
               </div>
             @endforeach
           </div>
-
-          <div class="form-group form-check pl-0">
-            <select class="form-control form-control-sm {{$errors->has('author_id') ? "border-danger" : "" }}" name="author_id">
-              <option value="">Author</option>
-
-              @foreach ($authors as $author)
-                <option  value="{{$author->id}}">{{$author->username}}</option>
-
-              @endforeach
-            </select>
-            {!! $errors->first('author_id', '<small class="form-text text-danger">:message</small>') !!}
-          </div>
-
 
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
